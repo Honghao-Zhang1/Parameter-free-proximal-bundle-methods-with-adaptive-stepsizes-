@@ -1,5 +1,8 @@
 # Parameter-free proximal bundle methods with adaptive stepsizes
 
+Parameter-free bundle-type algorithms for convex optimization and saddle-point
+problems with theoretical guarantees and numerical experiments.
+
 This repository contains MATLAB implementations used to test proximal bundle
 and accelerated proximal level methods for nonsmooth convex optimization.
 
