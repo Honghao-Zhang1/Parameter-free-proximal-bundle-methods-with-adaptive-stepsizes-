@@ -59,7 +59,7 @@ function [pi,fmax] = method_3_adgpb(q,W,T,h,x,subopt,pi_0,tau)
  
         j = 1;
         % eps/4+fbest/2
-        while t  >   eps/4+(fbest-opt)/2          
+        while t  >   eps/4+(fbest-opt)/4         
             total = total +1;
             j = j+1; 
             % left = 0;
@@ -102,7 +102,7 @@ function [pi,fmax] = method_3_adgpb(q,W,T,h,x,subopt,pi_0,tau)
                 fbest = fpi;
             end
             t =  fbest- m;
-            if t- tau*t_old > (1-tau)*(eps/4+(fbest-opt)/4)          
+            if t- tau*t_old > (1-tau)*(eps/8+(fbest-opt)/8)          
                 bad=1;
                 lam = lam/2;
             end
