@@ -1,23 +1,26 @@
 function  [f,g]=helper_dual_oracle(q,W,T,h,pi,x)
-    % names = { 'y'; 'u'};
+    q  = q(:);
+    pi = pi(:);
+    x  = x(:);
+
+    n = numel(pi);
+
     model.A = sparse([W,T]);
     model.obj = [q; -pi];
-    model.rhs = h ;
-    % model.lb= 0 ;
-    % model.ub= 1 ;
+    model.rhs = h;
     model.sense = '>';
-    % type = 
-    model.vtype = 'B';
-    % model.varnames = names;
 
-    % gurobi_write(model, 'mip1.lp');
+    % y is binary, u is continuous in [0,1]^n
+    model.lb = zeros(2*n,1);
+    model.ub = ones(2*n,1);
+    model.vtype = [repmat('B', n, 1); repmat('C', n, 1)];
 
     params.outputflag = 0;
 
     result = gurobi(model, params);
-    % y = result.x(1:120);      
-    u = result.x(121:240);
-    g = -u+x;
-    % pi'*x
-    f = result.objval+pi'*x;
+
+    u = result.x(n+1:2*n);
+
+    g = -u + x;
+    f = result.objval + pi' * x;
 end
