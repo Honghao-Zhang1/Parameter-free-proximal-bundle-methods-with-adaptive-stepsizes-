@@ -56,7 +56,7 @@ function  method_4_p_adgpb_star(K,x_0,eps,tau,n,A,b,c)
             return
         end
         % eps/4+fbest/2
-        while t  >   eps/4+fcenter/2
+        while t  >   eps/4+fcenter/4
             j = j+1; 
             if (a1-a2)'*max(center -lam*a2',0)'+b1-b2 <=0
                 alpha = 0;
@@ -97,7 +97,7 @@ function  method_4_p_adgpb_star(K,x_0,eps,tau,n,A,b,c)
             end
             t =  fbest- m;
             % eps/8+fbest/4
-            if t- tau*t_old > (1-tau)*(eps/8+fcenter/4)           
+            if t- tau*t_old > (1-tau)*(eps/8+fcenter/8)           
                 % bad=1;
                 lam = lam/2;
             end
