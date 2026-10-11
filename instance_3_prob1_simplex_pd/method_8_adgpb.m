@@ -118,7 +118,7 @@ function  method_8_adgpb(K,lam,x_0,eps,tau,n,A,b,D)
             end
             t =  fbest- m;
             % eps/8+fbest/4
-            if t- tau*t_old > (1-tau)*(eps/8+beta*(fcenter-Lb)/2)           
+            if t- tau*t_old > (1-tau)*(eps/8+beta*(fcenter-Lb)/8)           
                  bad=1;
                 lam = lam/2;
                 if lam < lammin
