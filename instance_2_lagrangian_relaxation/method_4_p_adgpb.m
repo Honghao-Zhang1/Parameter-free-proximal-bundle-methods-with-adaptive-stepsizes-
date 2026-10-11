@@ -56,7 +56,7 @@ function [pi,fcut] = method_4_p_adgpb(q,W,T,h,x,subopt,pi_0,tau,lam)
  
         j = 1;
         % eps/4+fbest/2
-        while t  >   eps/4+(fbest-opt)/2          
+        while t  >   eps/4+(fbest-opt)/4          
             total = total +1;
             j = j+1; 
             alpha =  ((a1 - a2)'*center- lam*a1'*a2+lam *norm(a2)^2+b1-b2)/(lam*norm(a1-a2)^2);
@@ -84,7 +84,7 @@ function [pi,fcut] = method_4_p_adgpb(q,W,T,h,x,subopt,pi_0,tau,lam)
                 fbest = fpi;
             end
             t =  fbest- m;
-            if t- tau*t_old > (1-tau)*(eps/8+(fbest-opt)/4)          
+            if t- tau*t_old > (1-tau)*(eps/8+(fbest-opt)/8)          
                 % bad=1;
                 lam = lam/2;
             end
