@@ -22,7 +22,7 @@ function  method_8_adgpb(K,lam,x_0,eps,tau,n,A,b,D)
     phik=zeros(1);
     hatgk = zeros(1);
     lamsum = 0;
-    beta = 1/2;
+    beta = 1/4;
     lamini = lam;
     lammin = lam;
     lammax = lam;
@@ -176,9 +176,6 @@ function  method_8_adgpb(K,lam,x_0,eps,tau,n,A,b,D)
             if (j == length(lamsum)-1) &  (2* hatgk> phik(j) - Lb*lamsum(j))
                 beta = beta/2;
             end
-        end
-        if bad == 0  
-           lam = 2*lam;
         end
         if lam >lammax
             lammax = lam;
